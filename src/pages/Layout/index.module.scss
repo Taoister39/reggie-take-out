@@ -1,0 +1,42 @@
+.layout-view {
+  // 让这个元素宽度和高度铺满屏幕
+  // vw -< view width，视口单位，浏览器内容宽度大小，vh同理
+  min-width: 100vw;
+  min-height: 100vh;
+  // 头部栏
+  .header {
+    background-color: #fff;
+    // 这里是水平垂直居中
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /*
+        对应这行代码使用的样式
+          <Typography.Title level={5} className={styles.title}>
+            员工管理
+          </Typography.Title>
+    */
+    .title {
+      margin: 0;
+    }
+  }
+  // logo是一个div元素，
+  .logo {
+    // sass变量
+    $width: 117px;
+    $height: 32px;
+    // 设置背景
+    background: url("../../assets/login/login-logo.png") no-repeat;
+    background-size: $width $height;
+    // 引用sass变量
+    width: $width;
+    height: $height;
+    // 上下编剧5em，左右居中，1em为父元素文本大小
+    margin: 5em auto;
+  }
+  // 内容栏
+  .content {
+    padding: 20px;
+  }
+}

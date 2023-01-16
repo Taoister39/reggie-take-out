@@ -1,0 +1,37 @@
+// 这个div铺满屏幕，以渲染背景色
+.login-view {
+  background-color: #333;
+  width: 100vw;
+  height: 100vh;
+}
+// 登录的卡片
+.login-card {
+  width: 1000px;
+  height: 474.38px;
+  border-radius: 8px;
+  // 垂直水平居中
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  // 往自身一半的宽高移动 -- 2d变换
+  transform: translate(-50%, -50%);
+  // flex布局，所有子元素（非后代）为弹性元素
+  display: flex;
+  // 所有子元素应用
+  > * {
+    // 弹性元素增长权值为 1 ，缩减权值 1 ，未实现增长和缩减宽度时的默认宽度
+    flex: 1 1 1px;
+  }
+  // 这个元素覆盖上面规则
+  .login-cover {
+    flex: 0 1 60%;
+  }
+  // logo左右居中，上外边距为3em，1em = 父元素字体宽度
+  .title-logo {
+    width: 139px;
+    height: 42px;
+    // 必须为块，否则无法应用margin-inline:auto;
+    display: block;
+    margin: 3em auto;
+  }
+}
