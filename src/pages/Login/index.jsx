@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 // 避免了两个文件写同类名但样式不同会合并样式，编译后会是两个不同css类名，所有由构建工具完成。
 import styles from "./index.module.scss";
 // 这里导入的值是一个路径字符串，由构建工具完成，`方便直接当变量引入如html img的src值
-import logoImg from "../../assets/login/logo.png";
-import coverImg from "../../assets/login/login-l.png";
+import logoImg from "@/assets/login/logo.png";
+import coverImg from "@/assets/login/login-l.png";
 
 const Login = () => {
   // 返回一个函数，此函数可以更改浏览器url

@@ -3,22 +3,26 @@
         "browser": true,
         "es2021": true
     },
+    // 扩展都为通用的
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended"
     ],
     "overrides": [],
     "parserOptions": {
+        // es特性，在jsx文件也可以使用
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        "ecmaVersion": "latest", // 最新es语法标准
+        "sourceType": "module" // 使用es模块
     },
+    // 配置为react
     "plugins": [
         "react"
     ],
     "rules": {
+        // 把必须导入react才能用jsx语法去掉
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [
             1,

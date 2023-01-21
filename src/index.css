@@ -1,0 +1,7 @@
+/* 全局css变量 */
+:root {
+  /* 主色 */
+  --mainColor: #ffc200;
+  /* 副色 */
+  --continueColor: #333333;
+}

@@ -21,19 +21,42 @@
       margin: 0;
     }
   }
-  // logo是一个div元素，
-  .logo {
-    // sass变量
-    $width: 117px;
-    $height: 32px;
-    // 设置背景
-    background: url("../../assets/login/login-logo.png") no-repeat;
-    background-size: $width $height;
-    // 引用sass变量
-    width: $width;
-    height: $height;
-    // 上下编剧5em，左右居中，1em为父元素文本大小
-    margin: 5em auto;
+  // 侧边（左边）组件
+  .slider {
+    // 背景色，后面菜单组件也会用到
+    $bgColor: rgb(52, 55, 68);
+    background-color: $bgColor;
+    // logo是一个div元素，
+    .logo {
+      // sass变量
+      $width: 117px;
+      $height: 32px;
+      // 设置背景
+      background: url("../../assets/login/login-logo.png") no-repeat;
+      background-size: $width $height;
+      // 引用sass变量
+      width: $width;
+      height: $height;
+      // 上下编剧5em，左右居中，1em为父元素文本大小
+      margin: 5em auto;
+    }
+    // 菜单组件自定义样式
+    .my-menu {
+      // 看起来右边应该多留一些空区
+      padding-right: 34px;
+      background-color: $bgColor;
+      // :global()语法，是将参数里的选择器不做hash处理
+      // 菜单项让每个看起来有点距离，同时改变边角
+      :global(.ant-menu-item) {
+        border-radius: 0 21px 21px 0;
+        margin-bottom: 20px;
+        margin-left: 0;
+      }
+      // 最后一个菜单项没必要下边距
+      :gloabl(.ant-menu-item:last-child) {
+        margin-bottom: 0;
+      }
+    }
   }
   // 内容栏
   .content {

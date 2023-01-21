@@ -1,0 +1,19 @@
+.staff-manage {
+  background: white;
+  padding: 20px;
+
+  .top-bar {
+    margin-bottom: 20px;
+    // 垂直居中 - 两端对齐
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // 搜索框
+    .search {
+      .icon {
+        cursor: pointer;
+      }
+      width: 250px;
+    }
+  }
+}

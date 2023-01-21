@@ -1,0 +1,16 @@
+.classify-manage {
+  padding: 20px;
+  background-color: white;
+
+  .top-bar {
+    margin-bottom: 20px;
+  }
+}
+
+// 模态框顶部菜单栏，右端对齐
+// ! 由于modal渲染完成并不是在id为app的元素上，所以用后代选择器无法匹配
+.modal-bar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
