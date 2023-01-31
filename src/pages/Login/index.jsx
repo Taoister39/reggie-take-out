@@ -7,12 +7,21 @@ import styles from "./index.module.scss";
 // 这里导入的值是一个路径字符串，由构建工具完成，`方便直接当变量引入如html img的src值
 import logoImg from "@/assets/login/logo.png";
 import coverImg from "@/assets/login/login-l.png";
+import request from "@/utils/request";
+import { setUserinfo } from "@/utils/userinfo";
 
 const Login = () => {
   // 返回一个函数，此函数可以更改浏览器url
   const navigate = useNavigate();
-  // 表单提交时的事件
-  const onFinish = (params) => {
+  // 表单提交时的事件，这是一个异步函数，调用返回的是一个Promise对象
+  const onFinish = async (params) => {
+    // 将异步的结果兑现（等待成同步的值），如果有错误后面不会执行
+    const response = await request.post("/employee/login", params);
+    // 后端的数据
+    const userinfo = response.data.data;
+    // 把结果保存到本地存储
+    setUserinfo(userinfo);
+    // 可以进入主页面了
     navigate("/");
   };
 

@@ -16,6 +16,18 @@ https://react.docschina.org/docs/components-and-props.html
 
 ---
 
+**State**
+
+https://react.docschina.org/docs/state-and-lifecycle.html
+
+State，数据是响应式绑定在视图上
+
+**Effect**
+
+https://react.docschina.org/docs/hooks-effect.html
+
+组件的某个生命周期会执行的函数
+
 ## React-Router
 
 **使用、定义前端路由**
@@ -35,6 +47,12 @@ https://www.reactrouter.cn/docs/getting-started/tutorial#%E8%BF%9E%E6%8E%A5%E8%B
 过一遍概述，不需要一定掌握，本文章案例少，建议搭配视频
 
 https://www.reactrouter.cn/docs/getting-started/overview#%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1
+
+---
+
+**路由传值**
+
+https://ithelp.ithome.com.tw/articles/10306611
 
 ## Ant-Design UI
 
@@ -59,3 +77,9 @@ https://ant.design/components/breadcrumb-cn
 这个对新人不友好，看着困难就知道能用就行
 
 https://ant.design/docs/react/customize-theme-cn#%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B
+
+---
+
+**Result（结果反馈）**
+
+https://ant.design/components/result-cn#components-result-demo-customicon

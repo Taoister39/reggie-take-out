@@ -10,6 +10,9 @@ import StaffManage from "@/pages/StaffManage";
 // 分类管理
 import ClassifyManage from "@/pages/ClassifyManage";
 import AddStaff from "@/pages/StaffManage/AddStaff";
+import DishesManage from "@/pages/DishesManage";
+import AddDishes from "@/pages/DishesManage/AddDisheds";
+import NotFound from "@/pages/NotFound";
 
 function App() {
   return (
@@ -21,15 +24,22 @@ function App() {
         <Route path="/" element={<LayoutView />}>
           {/* 子路由 - index prop 代表着和父路由同样路径 */}
           <Route index element={<Navigate to="/staff" />} />
+          {/* 员工管理 */}
           <Route path="/staff">
             <Route index element={<StaffManage />} />
-            <Route path="addstaff" element={<AddStaff />} />
+            <Route path="/addstaff" element={<AddStaff />} />
           </Route>
+          {/* 分类管理 */}
           <Route path="/classify" element={<ClassifyManage />} />
+          {/* 菜品管理 */}
+          <Route path="/dishes">
+            <Route index element={<DishesManage />} />
+            <Route path="/adddishes" element={<AddDishes />} />
+          </Route>
         </Route>
         <Route path="/login" element={<Login />} />
-        {/* 当除/或login开头的路由都不匹配时，前端导航到登录 */}
-        <Route path="*" element={<Navigate to="/login" />} />
+        {/* 当除/或login开头的路由都不匹配时，前端导航到404页面*/}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

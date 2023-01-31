@@ -113,3 +113,44 @@ Router 组件的 path 对应浏览器地址栏的路径
 ```
 
 **pathname**属性可以帮助我们找到浏览器 url 地址，这样我们再通过字符串分割 _/_ 符号，以捕获路径层次。
+
+# 路由传递数据
+
+**用于路由层级传递数据**
+
+父路由通过 prop context 给子路由组件传递数据，子路由通过 useOutletContext 拿取。_（登录接口版本暂未完全使用）_
+
+父路由
+
+```jsx
+const [myInfo, setMyInfo] = useState({});
+<Outlet context={[myInfo, setMyInfo]} />;
+```
+
+子路由
+
+```jsx
+const [myInfo, setMyInfo] = useOutletContext();
+```
+
+这样在**子路由**组件可以通过`setMyInfo`来更新**父路由**组件的数据，一般传递通常是是 State。
+
+**用于路由导航之间传递数据**
+
+**如果是两个非层级路由跳转，比如`Link`组件的`state` prop。** 在跳转后的页面中，`useLocation`函数返回的**对象**，包含了`state`属性，这个属性则是传递的数据。
+
+员工管理
+
+```jsx
+<Link to="./addstaff" state={record}>
+  <Button type="link">编辑</Button>
+</Link>
+```
+
+添加员工
+
+```jsx
+const edit = useLocation().state;
+```
+
+record 则代表表格中这一行的数据（对象），此时传递给添加员工页面 edit 变量。

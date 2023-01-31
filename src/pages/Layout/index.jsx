@@ -7,6 +7,7 @@ import {
   Popconfirm,
   Space,
   Typography,
+  message,
 } from "antd";
 // ant-design图标
 import {
@@ -21,6 +22,9 @@ import {
 // 避免了两个文件写同类名但样式不同会合并样式，编译后会是两个不同css类名，所有由构建工具完成。
 import styles from "./index.module.scss";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
+import request from "@/utils/request";
+import { useState } from "react";
+import { getUserinfo } from "@/utils/userinfo";
 // 布局视图组件，在这里将员工、分类等等功能作为子组件使
 const LayoutView = () => {
   /**ant0design菜单组件的元素，这里的@type意思是让编辑器识别类型
@@ -60,7 +64,8 @@ const LayoutView = () => {
   // 路径表
   const pathMap = {
     staff: "员工管理",
-    addstaff: "添加员工",
+    addstaff: "添加或编辑员工",
+    adddishes: "添加菜品",
     classify: "分类管理",
     dishes: "菜品管理",
     combo: "套餐管理",
@@ -73,6 +78,19 @@ const LayoutView = () => {
   const breadPaths = location.pathname.split("/");
   // 第一个不要，因为分割时 第一个/ 左边为空字符串
   breadPaths.shift();
+  // 退出登录
+  const onLogout = async () => {
+    // 因为不需要用返回值，所以直接兑现异步期约对象
+    await request.post("/employee/logout");
+    // 如果上面网络请求有问题会抛出异常，后面函数体不会值星
+    message.success("退出登录成功");
+    // 返回登录页
+    navigate("/login");
+  };
+  // 用户信息视为State（状态）
+  const [userinfo, setUserinfo] = useState(getUserinfo());
+  // 每次重新渲染的时候，这个变量会更新，那么url第一个路径就是我们选择的菜单项
+  const selectedKey = breadPaths[0];
 
   return (
     // https://ant.design/components/layout-cn
@@ -88,6 +106,7 @@ const LayoutView = () => {
           items={menuItems}
           mode="inline"
           theme="dark"
+          selectedKeys={[selectedKey]}
           className={styles["my-menu"]}
         />
       </Layout.Sider>
@@ -112,15 +131,13 @@ const LayoutView = () => {
           </Breadcrumb>
           {/* </Typography.Title> */}
           <div>
-            <Typography.Text type="success">管理员</Typography.Text>
+            <Typography.Text type="success">{userinfo.name}</Typography.Text>
             <Button type="link">
               {/* 气泡确认框，子组件为显示内容，由父组件prop完成确认框点击显示内容 */}
               <Popconfirm
                 title="确认是否退出"
                 // 点击确认时的事件
-                onConfirm={() => {
-                  navigate("/login");
-                }}
+                onConfirm={onLogout}
                 // 确认按钮的文字内容
                 okText="确认"
                 // 取消按钮的文字内容
@@ -138,7 +155,8 @@ const LayoutView = () => {
         {/*下边 - 展示具体功能内容 */}
         <Layout.Content className={styles.content}>
           {/* 渲染子路由匹配的组件 */}
-          <Outlet />
+          {/* prop context则是子路由传递的数据（非路由跳转） */}
+          <Outlet context={[userinfo, setUserinfo]} />
         </Layout.Content>
       </Layout>
     </Layout>
