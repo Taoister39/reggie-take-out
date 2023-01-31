@@ -25,16 +25,16 @@ function App() {
           {/* 子路由 - index prop 代表着和父路由同样路径 */}
           <Route index element={<Navigate to="/staff" />} />
           {/* 员工管理 */}
-          <Route path="/staff">
+          <Route path="staff">
             <Route index element={<StaffManage />} />
-            <Route path="/addstaff" element={<AddStaff />} />
+            <Route path="addstaff" element={<AddStaff />} />
           </Route>
           {/* 分类管理 */}
-          <Route path="/classify" element={<ClassifyManage />} />
+          <Route path="classify" element={<ClassifyManage />} />
           {/* 菜品管理 */}
-          <Route path="/dishes">
+          <Route path="dishes">
             <Route index element={<DishesManage />} />
-            <Route path="/adddishes" element={<AddDishes />} />
+            <Route path="adddishes" element={<AddDishes />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />
